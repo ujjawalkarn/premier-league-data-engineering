@@ -15,4 +15,7 @@ Welcome to the Premier League Data Engineering project. I tackle the challenge o
      Goals per season: https://www.worldfootball.net/stats/eng-premierleague/1/
 # Data-pipeline
   ![image](https://github.com/user-attachments/assets/e136da54-c513-4e51-bf75-6ca1872e1aa9)
-  
+
+# PowerBI Dashboard
+  ![image](https://github.com/user-attachments/assets/d2757db2-8da4-4025-a738-642975c8d58c)
+
