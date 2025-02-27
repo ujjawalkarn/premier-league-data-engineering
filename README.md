@@ -24,6 +24,6 @@ Welcome to the Premier League Data Engineering project. I tackle the challenge o
 5. Data Analysis & Visualization: Leveraged Preset for interactive data analysis and visualization.
 6. Automation & Scheduling: Integrated an EventBridge rule to automate the process, ensuring it runs every Saturday and Sunday until the season concludes.
 
-# PowerBI Dashboard
+# Dashboard
   ![image](https://github.com/user-attachments/assets/d2757db2-8da4-4025-a738-642975c8d58c)
 
