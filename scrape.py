@@ -3,14 +3,15 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 import boto3
-from io import StringIO
+from io import BytesIO
 
+# Configure your AWS S3
 s3_client = boto3.client('s3')
 
 def upload_to_s3(df, bucket_name, file_name):
-    csv_buffer = StringIO()
-    df.to_csv(csv_buffer, index=False)
-    s3_client.put_object(Bucket=bucket_name, Key=file_name, Body=csv_buffer.getvalue())
+    parquet_buffer = BytesIO()
+    df.to_parquet(parquet_buffer, index=False)
+    s3_client.put_object(Bucket=bucket_name, Key=file_name, Body=parquet_buffer.getvalue())
 
 def league_table():
     url = 'https://www.bbc.com/sport/football/premier-league/table'
@@ -29,7 +30,7 @@ def league_table():
         league_table.loc[length] = row
     league_table.drop(["Form, Last 6 games, Oldest first"], axis=1, inplace=True)
     
-    upload_to_s3(league_table, 'premier-league-data', 'league_table.csv')
+    upload_to_s3(league_table, 'premier-league-data', 'league_table.parquet')
     return league_table
 
 def top_scorers():
@@ -48,7 +49,7 @@ def top_scorers():
         length = len(top_scorers)
         top_scorers.loc[length] = row
     
-    upload_to_s3(top_scorers, 'premier-league-data', 'top_scorers.csv')
+    upload_to_s3(top_scorers, 'premier-league-data', 'top_scorers.parquet')
     return top_scorers
 
 def detail_top():
@@ -67,12 +68,12 @@ def detail_top():
         length = len(detail_top_scorer)
         detail_top_scorer.loc[length] = row
     
-    upload_to_s3(detail_top_scorer, 'premier-league-data', 'detailed_top_scorers.csv')
+    upload_to_s3(detail_top_scorer, 'premier-league-data', 'detailed_top_scorers.parquet')
     return detail_top_scorer
 
 def all_time_table():
     url = 'https://www.worldfootball.net/alltime_table/eng-premier-league/pl-only/'
-    headers = ['pos','#', 'Team',' Matches', 'wins', 'Draws', 'Losses', 'Goals' ,'Dif', 'Points']
+    headers = ['pos','#','Team','Matches','wins','Draws','Losses','Goals','Dif','Points']
     page = requests.get(url)
     soup = BeautifulSoup(page.text, "html.parser")
     table = soup.find("table", class_="standard_tabelle")
@@ -84,7 +85,7 @@ def all_time_table():
         length = len(alltime_table)
         alltime_table.loc[length] = row
     
-    upload_to_s3(alltime_table, 'premier-league-data', 'all_time_table.csv')
+    upload_to_s3(alltime_table, 'premier-league-data', 'all_time_table.parquet')
     return alltime_table
 
 def goals_per_season():
@@ -104,7 +105,7 @@ def goals_per_season():
         goals_per_season.loc[length] = row
     goals_per_season.drop(goals_per_season.index[-1], inplace=True)
     
-    upload_to_s3(goals_per_season, 'premier-league-data', 'goals_per_season.csv')
+    upload_to_s3(goals_per_season, 'premier-league-data', 'goals_per_season.parquet')
     return goals_per_season
 
 # Example function calls
