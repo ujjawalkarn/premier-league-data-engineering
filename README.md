@@ -1,4 +1,4 @@
-# premier-league-data-engeneering
+# premier-league-data-engineering
 ![skysports-premier-league-feature_6211072](https://github.com/user-attachments/assets/0fe43404-fbd5-4061-9bb1-8c55044ff240)
 
 Welcome to the Premier League Data Engineering project. I tackle the challenge of consuming data from multiple sites, processing it, pushing it to an S3 bucket, normalizing the data, and running analytics. 
@@ -8,7 +8,7 @@ Welcome to the Premier League Data Engineering project. I tackle the challenge o
 2. Top scorers: https://www.bbc.com/sport/football/premier-league/top-scorers
 3. Detailed top scorers: https://www.worldfootball.net/goalgetter/eng-premier-league-2024-2025/
 4. Player table: https://www.worldfootball.net/players_list/eng-premierleague-2024-2025/
-5. All time table: https://www.worldfootball.net/alltime_table/eng-premier-league/pl-only/
+5. All-time table: https://www.worldfootball.net/alltime_table/eng-premier-league/pl-only/
 6. All-time winner (clubs): https://www.worldfootball.net/winner/eng-premier-league/
 7. Top scorers per season: https://www.worldfootball.net/top_scorer/eng-premier-league/
 8. Goals per season: https://www.worldfootball.net/stats/eng-premierleague/1/
